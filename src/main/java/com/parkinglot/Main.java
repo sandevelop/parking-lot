@@ -1,3 +1,5 @@
+package com.parkinglot;
+
 import java.util.Scanner;
 
 import com.parkinglot.constants.ParkingAppConstants;
@@ -44,7 +46,6 @@ public class Main {
 					
 					Main.printMenu();
 				}
-				flag = false;
 			}
 		}
 		catch(Exception e)
