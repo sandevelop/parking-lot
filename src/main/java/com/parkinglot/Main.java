@@ -3,6 +3,8 @@ package com.parkinglot;
 import java.util.Scanner;
 
 import com.parkinglot.constants.ParkingAppConstants;
+import com.parkinglot.process.builder.ParkingLotServiceBuilder;
+import com.parkinglot.service.impl.ParkingLotServiceImpl;
 import com.parkinglot.util.BaseValidator;
 
 public class Main {
@@ -13,7 +15,7 @@ public class Main {
 		Boolean flag = true;
 		String input = null;
 		Scanner sc = null;
-		
+		ParkingLotServiceImpl impl =  new ParkingLotServiceImpl();
 		
 		try {
 			
@@ -38,14 +40,17 @@ public class Main {
 				
 				if(isValidInput)
 				{
-					//Perform Actions
-					System.out.println(input);
+					ParkingLotServiceBuilder.getInstance()
+					.withInput(input)
+					.withParkingLotService(impl)
+					.execute();
 				}
 				else 
 				{
-					
+					System.out.println("Invalid Command: " + input+"\n\n\n");
 					Main.printMenu();
 				}
+				flag = false;
 			}
 		}
 		catch(Exception e)

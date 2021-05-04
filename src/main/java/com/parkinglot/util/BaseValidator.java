@@ -1,6 +1,7 @@
 package com.parkinglot.util;
 
 import com.parkinglot.constants.CommandsParamMap;
+import com.parkinglot.exception.SystemException;
 
 public class BaseValidator {
 
@@ -35,5 +36,17 @@ public class BaseValidator {
 			valid = false;
 		}
 		return valid;
+	}
+	
+	public boolean validateNullCheck(Object obj, String exceptionMsg) throws SystemException 
+	{
+		boolean flag = true;
+		if(null == obj)
+		{
+			flag = false;
+			throw new SystemException(exceptionMsg);
+		}
+		
+		return flag;
 	}
 }
